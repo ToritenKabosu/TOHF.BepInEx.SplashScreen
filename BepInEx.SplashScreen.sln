@@ -41,7 +41,7 @@ Global
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		BepInEx.SplashScreen.Patcher.Common\BepInEx.SplashScreen.Patcher.Common.projitems*{191fdc4a-01a7-4b27-8e15-6592e782d424}*SharedItemsImports = 5
-		BepInEx.SplashScreen.Patcher.Common\BepInEx.SplashScreen.Patcher.Common.projitems*{449b9f51-bbe5-4d4a-8936-e0a3081d79cb}*SharedItemsImports = 4
+		BepInEx.SplashScreen.Patcher.Common\BepInEx.SplashScreen.Patcher.Common.projitems*{449b9f51-bbe5-4d4a-8936-e0a3081d79cb}*SharedItemsImports = 5
 		BepInEx.SplashScreen.Patcher.Common\BepInEx.SplashScreen.Patcher.Common.projitems*{9f49a44d-5a6f-462b-8f96-e95aefd7cbbc}*SharedItemsImports = 4
 		BepInEx.SplashScreen.Patcher.Common\BepInEx.SplashScreen.Patcher.Common.projitems*{f296d0da-ba52-40ee-b33f-368ab2299c31}*SharedItemsImports = 13
 	EndGlobalSection

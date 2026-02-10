@@ -16,7 +16,7 @@ namespace BepInEx.SplashScreen
         public static LoadingLogListener StartListening()
         {
             var l = new LoadingLogListener();
-            Logger.Listeners.Add(l);
+            Logging.Logger.Listeners.Add(l);
             return l;
         }
 
@@ -111,9 +111,7 @@ namespace BepInEx.SplashScreen
             }
         }
 
-#if Bep6 // todo set actual necessary log levels
         public LogLevel LogLevelFilter => LogLevel.All;
-#endif
 
         private static IEnumerator DelayedCo()
         {

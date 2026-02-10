@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 
-[assembly: AssemblyTitle("BepInEx.SplashScreen.GUI")]
+//[assembly: AssemblyTitle("BepInEx.SplashScreen.GUI")]
 
 namespace BepInEx.SplashScreen
 {
@@ -24,6 +24,8 @@ namespace BepInEx.SplashScreen
         [STAThread]
         public static void Main(params string[] args)
         {
+            Log("Splash started", false);
+
             try
             {
                 Application.SetCompatibleTextRenderingDefault(false);
@@ -31,15 +33,9 @@ namespace BepInEx.SplashScreen
 
                 if (args.Length == 0)
                 {
-                    if (MessageBox.Show("This is a splash screen that shows loading progress when a game patched with BepInEx is loading. It is automatically started and then updated by \"BepInEx.SplashScreen.Patcher.dll\" and can't be opened manually.\n\n" +
-                                        "If you can't see a splash screen when the game is starting:\n" +
-                                        "1 - Make sure that \"BepInEx.SplashScreen.GUI.exe\" and \"BepInEx.SplashScreen.Patcher.dll\" are both present inside the \"BepInEx\\patchers\" folder.\n" +
-                                        "2 - Check if the splash screen isn't disabled in \"BepInEx\\config\\BepInEx.SplashScreen.cfg\".\n" +
-                                        "3 - Update BepInEx5 to latest version and make sure that it is running.\n" +
-                                        "4 - If the splash screen still does not appear, check the game log for any errors or exceptions. You can report issues on GitHub.\n\n" +
-                                        "Do you want to open the GitHub repository page of BepInEx.SplashScreen?",
+                    if (MessageBox.Show(GetText.GetManualLaunchWarningMessage(),
                                         "BepInEx Loading Progress Splash Screen", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-                        Process.Start("https://github.com/BepInEx/BepInEx.SplashScreen");
+                        Process.Start("https://github.com/ToritenKabosu/TOHF.BepInEx.SplashScreen");
                     return;
                 }
 
@@ -54,7 +50,7 @@ namespace BepInEx.SplashScreen
                 try
                 {
                     // Get game name
-                    _mainForm.Text = $@"{gameProcess.ProcessName} is loading...";
+                    _mainForm.Text = GetText.GetLoadingText(gameProcess.ProcessName);
 
                     if (gameProcess.MainModule == null)
                         throw new FileNotFoundException("gameProcess.MainModule is null");
@@ -192,18 +188,24 @@ namespace BepInEx.SplashScreen
                         break;
 
                     default:
+                        if (message.Contains("Preloader started")) RunEventsUpTo(LoadEvent.PreloaderStart);
+                        if (message.Contains("Preloader finished")) RunEventsUpTo(LoadEvent.PreloaderFinish);
+                        if (message.Contains("Chainloader started") ||
+                            message.Contains("Chainloader initialized")) RunEventsUpTo(LoadEvent.ChainloaderStart);
+                        if (message.Contains("Chainloader startup complete")) RunEventsUpTo(LoadEvent.ChainloaderFinish);
+
                         if (message.EndsWith(" patcher plugins loaded", StringComparison.Ordinal)) //bep6
                         {
                             RunEventsUpTo(LoadEvent.PreloaderStart);
                         }
-                        else if (message.StartsWith("Patching ", StringComparison.Ordinal) || // bep5
-                                 message.StartsWith("Executing ", StringComparison.Ordinal) && message.EndsWith(" patch(es)", StringComparison.Ordinal)) //bep6
+                        else if (message.Contains("Patching ") || // bep5
+                                 message.Contains("Executing ") && message.EndsWith(" patch(es)", StringComparison.Ordinal)) //bep6
                         {
                             RunEventsUpTo(LoadEvent.PreloaderStart);
 
                             _mainForm.SetStatusDetail(message);
                         }
-                        else if (message.StartsWith("Loading ", StringComparison.Ordinal)) //bep5 and bep6
+                        else if (message.Contains("Loading ")) //bep5 and bep6
                         {
                             RunEventsUpTo(LoadEvent.ChainloaderStart);
 
@@ -212,7 +214,7 @@ namespace BepInEx.SplashScreen
                             _pluginProcessedCount++;
                             _mainForm.SetPluginProgress((int)Math.Round(100f * (_pluginProcessedCount / (float)_pluginCount)));
                         }
-                        else if (message.StartsWith("Skipping ", StringComparison.Ordinal)) //bep5 and bep6?
+                        else if (message.Contains("Skipping ")) //bep5 and bep6?
                         {
                             RunEventsUpTo(LoadEvent.ChainloaderStart);
 
@@ -361,5 +363,10 @@ namespace BepInEx.SplashScreen
         }
 
         #endregion
+
+        public static void Exit() 
+        { 
+            Environment.Exit(0); 
+        }
     }
 }

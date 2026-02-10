@@ -9,7 +9,7 @@
     <Import_RootNamespace>BepInEx.SplashScreen.Patcher.Common</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
+    <!-- <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" /> -->
     <Compile Include="$(MSBuildThisFileDirectory)Metadata.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LoadingLogListener.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SplashScreenController.cs" />

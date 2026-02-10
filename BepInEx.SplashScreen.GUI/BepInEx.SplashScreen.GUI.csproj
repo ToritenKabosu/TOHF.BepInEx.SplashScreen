@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GetText.cs" />
     <Compile Include="IconManager.cs" />
     <Compile Include="LoadEvent.cs" />
     <Compile Include="SplashScreen.cs">

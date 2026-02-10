@@ -6,7 +6,7 @@ using BepInEx.Configuration;
 using HarmonyLib;
 using Mono.Cecil;
 
-[assembly: AssemblyTitle("BepInEx.SplashScreen.Patcher")]
+//[assembly: AssemblyTitle("BepInEx.SplashScreen.Patcher")]
 
 namespace BepInEx.SplashScreen
 {
@@ -16,6 +16,7 @@ namespace BepInEx.SplashScreen
 
         static BepInExSplashScreenPatcher()
         {
+            // できるだけ早く実行するために様々な手段を使って初期化を試みる
             // Use whatever gets us to run faster, or at all
             Init();
         }
@@ -24,6 +25,7 @@ namespace BepInEx.SplashScreen
         {
             get
             {
+                // できるだけ早く実行するために様々な手段を使って初期化を試みる
                 // Use whatever gets us to run faster, or at all
                 Init();
                 return Enumerable.Empty<string>();
@@ -32,6 +34,7 @@ namespace BepInEx.SplashScreen
 
         public static void Patch(AssemblyDefinition _)
         {
+            // できるだけ早く実行するために様々な手段を使って初期化を試みる
             // Use whatever gets us to run faster, or at all
             Init();
         }
@@ -39,6 +42,7 @@ namespace BepInEx.SplashScreen
         private static int _initialized;
         public static void Init()
         {
+            // 実行は1度のみ許可
             // Only allow to run once
             if (Interlocked.Exchange(ref _initialized, 1) == 1) return;
 

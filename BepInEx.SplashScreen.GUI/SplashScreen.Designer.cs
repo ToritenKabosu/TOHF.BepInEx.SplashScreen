@@ -75,7 +75,7 @@ namespace BepInEx.SplashScreen
             this.button1.Size = new System.Drawing.Size(282, 34);
             this.button1.TabIndex = 4;
             this.button1.TabStop = false;
-            this.button1.Text = "Open game folder";
+            this.button1.Text = GetText.GetOpenGameFolderText();
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
@@ -85,11 +85,7 @@ namespace BepInEx.SplashScreen
             this.checkedListBox1.CausesValidation = false;
             this.checkedListBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "Initialize environment and BepInEx",
-            "Load and apply patchers",
-            "Load and apply plugins",
-            "Start the game"});
+            this.checkedListBox1.Items.AddRange(GetText.GetCheckboxTextArray());
             this.checkedListBox1.Location = new System.Drawing.Point(8, 276);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.SelectionMode = System.Windows.Forms.SelectionMode.None;
@@ -107,7 +103,7 @@ namespace BepInEx.SplashScreen
             this.labelTop.Name = "labelTop";
             this.labelTop.Size = new System.Drawing.Size(282, 20);
             this.labelTop.TabIndex = 1;
-            this.labelTop.Text = "BepInEx is initializing...";
+            this.labelTop.Text = GetText.GetBepInExInitializingText();
             // 
             // labelBot
             // 
@@ -117,7 +113,7 @@ namespace BepInEx.SplashScreen
             this.labelBot.Name = "labelBot";
             this.labelBot.Size = new System.Drawing.Size(282, 33);
             this.labelBot.TabIndex = 2;
-            this.labelBot.Text = "The environment is being set up";
+            this.labelBot.Text = GetText.GetEnvironmentBeingSetupText();
             // 
             // panel1
             // 
@@ -171,7 +167,7 @@ namespace BepInEx.SplashScreen
             this.Padding = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "The game is loading...";
+            this.Text = GetText.GetGameLoadingText();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

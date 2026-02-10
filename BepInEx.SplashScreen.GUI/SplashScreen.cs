@@ -8,7 +8,7 @@ namespace BepInEx.SplashScreen
     public partial class SplashScreen : Form
     {
         private const string WorkingStr = "...";
-        private const string DoneStr = "...Done";
+        private static readonly string DoneStr = $"...{GetText.GetDoneText()}";
         private string _gameLocation;
         private int _pluginPercentDone;
 
@@ -33,19 +33,19 @@ namespace BepInEx.SplashScreen
                     checkedListBox1.SetItemChecked(0, true);
                     AppendToItem(0, DoneStr);
                     AppendToItem(1, WorkingStr);
-                    SetStatusMain("BepInEx patchers are being applied...");
+                    SetStatusMain(GetText.GetPatchersBeingAppliedText());
                     break;
 
                 case LoadEvent.PreloaderFinish:
                     checkedListBox1.SetItemChecked(1, true);
                     AppendToItem(1, DoneStr);
-                    SetStatusMain("Finished applying patchers.");
-                    SetStatusDetail("Plugins should start loading soon.\nIn case loading is stuck, check your entry point.");
+                    SetStatusMain(GetText.GetFinishedApplyingPatchersText());
+                    SetStatusDetail(GetText.GetPluginsStartLoadingSoonText());
                     break;
 
                 case LoadEvent.ChainloaderStart:
                     AppendToItem(2, WorkingStr);
-                    SetStatusMain("BepInEx plugins are being loaded...");
+                    SetStatusMain(GetText.GetPluginsBeingLoadedText());
                     break;
 
                 case LoadEvent.ChainloaderFinish:
@@ -53,8 +53,8 @@ namespace BepInEx.SplashScreen
                     checkedListBox1.SetItemChecked(2, true);
                     AppendToItem(2, DoneStr);
                     AppendToItem(3, WorkingStr);
-                    SetStatusMain("Finished loading plugins.");
-                    SetStatusDetail("Waiting for the game to start...\nSome plugins might need more time to finish loading.");
+                    SetStatusMain(GetText.GetFinishedLoadingPluginsText());
+                    SetStatusDetail(GetText.GetWaitingForGameToStartText());
                     break;
 
                 case LoadEvent.LoadFinished:

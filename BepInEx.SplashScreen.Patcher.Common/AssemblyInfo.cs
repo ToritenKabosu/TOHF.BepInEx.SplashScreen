@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿/*
+using System.Reflection;
 using System.Runtime.InteropServices;
 using BepInEx.SplashScreen;
 
@@ -11,3 +12,4 @@ using BepInEx.SplashScreen;
 [assembly: Guid("449b9f51-bbe5-4d4a-8936-e0a3081d79cb")]
 
 [assembly: AssemblyVersion(Metadata.Version)]
+*/

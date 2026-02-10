@@ -192,7 +192,7 @@ namespace BepInEx.SplashScreen
             catch (Exception e)
             {
                 // Welp, no Logger left to use. This shouldn't ever happen annyways.
-                Console.WriteLine(e);
+                //Console.WriteLine(e); // エラーが...
             }
         }
     }

@@ -3,7 +3,7 @@ using System.Threading;
 using BepInEx.Configuration;
 using BepInEx.Preloader.Core.Patching;
 
-[assembly: AssemblyTitle("BepInEx.SplashScreen.Patcher.Bep6")]
+//[assembly: AssemblyTitle("BepInEx.SplashScreen.Patcher.Bep6")]
 
 namespace BepInEx.SplashScreen
 {
