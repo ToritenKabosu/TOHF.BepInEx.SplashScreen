@@ -1,6 +1,6 @@
 # TOHF.BepInEx.SplashScreen
 [BepInEx.SplashScreen](https://github.com/BepInEx/BepInEx.SplashScreen)をベースに、TownOfHost-Fun用に多言語対応したものです。<br/>
-以下に、フォーク元リポジトリのREADMEを翻訳し、一部変更して掲載しています。
+以下に、フォーク元リポジトリのREADMEを翻訳し、一部変更して掲載します。
 ## BepInEx 読み込み進捗 SplashScreen
 現在読み込まれているPatcherやプラグインの情報を表示する、ゲーム起動時にロード画面を表示する BepInEx Patcherです。<br/>
 Patcherやプラグインの初期化に時間がかかるゲームに特に適しています。<br/>
