@@ -110,8 +110,8 @@ namespace BepInEx.SplashScreen
                 }
             }
         }
-
         public LogLevel LogLevelFilter => LogLevel.All;
+
 
         private static IEnumerator DelayedCo()
         {

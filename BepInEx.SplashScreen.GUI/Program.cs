@@ -304,16 +304,16 @@ namespace BepInEx.SplashScreen
                     var y = rct.Top + (rct.Bottom - rct.Top) / 2 - _mainForm.Height / 2;
                     var newLocation = new Point(x, y);
 
-                    if (_mainForm.Location != newLocation)
-                        _mainForm.Location = newLocation;
+                    /*if (_mainForm.Location != newLocation)
+                        _mainForm.Location = newLocation;*/
 
-                    if (_mainForm.FormBorderStyle != FormBorderStyle.None)
+                    /*if (_mainForm.FormBorderStyle != FormBorderStyle.None)
                     {
                         // At this point the form is snapped to the main game window so prevent user from trying to drag it
                         _mainForm.FormBorderStyle = FormBorderStyle.None;
                         //_mainForm.BackColor = Color.White;
                         _mainForm.PerformLayout();
-                    }
+                    }*/
                 }
             }
             catch (Exception)
